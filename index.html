@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Dustbin Notification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dustbin-status {
+            margin-bottom: 20px;
+        }
+
+        .dustbin {
+            width: 150px;
+            height: 200px;
+            background-color: #ddd;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .dustbin.full {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .dustbin.empty {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .notification {
+            background-color: #ffeb3b;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px;
+            display: none;
+        }
+
+        .notification p {
+            margin: 0;
+        }
+
+        .notification span {
+            font-weight: bold;
+        }
+
+        /* Initially hide the send notification button */
+        .send-notification-btn {
+            background-color: #ff9800;
+            visibility: hidden; /* Initially hidden */
+        }
+
+        .send-notification-btn.visible {
+            visibility: visible; /* Make visible when dustbin is full */
+        }
+
+        .send-notification-btn:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dustbin-status">
+            <h1>Smart Dustbin Status</h1>
+            <div id="dustbin" class="dustbin empty">
+                <span id="status-text">Empty</span>
+            </div>
+            <button id="toggle-status">Toggle Dustbin Status</button>
+        </div>
+        <div id="notification" class="notification">
+            <p>The dustbin in <span id="location">Location A</span> is full. Notify AMC team!</p>
+            <button id="send-notification" class="send-notification-btn">Send Notification to AMC</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('toggle-status').addEventListener('click', function() {
+            const dustbin = document.getElementById('dustbin');
+            const statusText = document.getElementById('status-text');
+            const notification = document.getElementById('notification');
+            const sendNotificationButton = document.getElementById('send-notification');
+            
+            // Toggle dustbin status
+            if (dustbin.classList.contains('empty')) {
+                dustbin.classList.remove('empty');
+                dustbin.classList.add('full');
+                statusText.textContent = 'Full';
+                
+                // Show notification and send button
+                notification.style.display = 'block'; // Show notification box
+                sendNotificationButton.classList.add('visible'); // Make the button visible
+            } else {
+                dustbin.classList.remove('full');
+                dustbin.classList.add('empty');
+                statusText.textContent = 'Empty';
+                
+                // Hide notification and send button
+                notification.style.display = 'none'; // Hide notification box
+                sendNotificationButton.classList.remove('visible'); // Hide the button
+            }
+        });
+
+        document.getElementById('send-notification').addEventListener('click', function() {
+            // Simulate sending a notification
+            alert('Notification sent to Ahmedabad Municipal Corporation (AMC)!');
+        });
+    </script>
+</body>
+</html>

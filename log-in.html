@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 160px;
+            display: block;
+            margin: auto;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .google-btn:hover {
+            background: #f1f1f1;
+        }
+
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: #888;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid grey;
+            margin: 0 10px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #000000;
+            /* Black */
+            outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup-btn,
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #000000;
+            /* Black */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .signup-btn:hover,
+        .login-btn:hover {
+            background: #333;
+            /* Darker shade */
+        }
+
+        .signin-link,
+        .signup-link,
+        .forgot-password {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signin-link a,
+        .signup-link a {
+            color: #000000;
+            /* Black */
+            text-decoration: none;
+        }
+
+        .signin-link a:hover,
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive styles for mobile screens */
+        @media (max-width: 400px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .logo img {
+                width: 140px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .google-btn {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .google-btn img {
+                width: 18px;
+            }
+
+            .separator {
+                font-size: 12px;
+            }
+
+            input {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .toggle-password {
+                font-size: 12px;
+                right: 8px;
+            }
+
+            .signup-btn,
+            .login-btn {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .signin-link,
+            .signup-link,
+            .forgot-password {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo1.png" alt="Logo">
+        </div>
+        <h2>Welcome Back</h2>
+        <p>Login to your account</p>
+        <div class="google-btn">
+            <img src="google-logo.png" alt="Google logo">
+            Sign in with Google
+        </div>
+        <p class="separator">or</p>
+        <div class="input-group">
+            <input type="email" placeholder="Email address">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+        <p class="forgot-password"><a href="#">Forgot Password?</a></p>
+        <button class="login-btn">Login</button>
+        <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+
+    <script>
+        function togglePassword() {
+            let passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>
